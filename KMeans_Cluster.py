@@ -16,8 +16,8 @@ c3cluster=[]
 count=0
 count1=0
 
-#calculate euclidian distance
-def euclidian(x1, y1, x2, y2):    
+#calculate euclidean distance
+def euclidean(x1, y1, x2, y2):    
     S = 0.0
     S = math.sqrt(( ( float(x1) - y1 )**2 )+( ( float(x2) - y2 )**2 ))
     return S
@@ -31,9 +31,9 @@ with open('videogames.csv') as file:
         else:
             x = line.split(',')
             dicdata[x[0]] = {'OTHERSALES':x[8], 'GLOBALSALES':x[9]}
-            valc1=euclidian(x[8],c1[0],x[9],c1[1])
-            valc2=euclidian(x[8],c2[0],x[9],c2[1])
-            valc3=euclidian(x[8],c3[0],x[9],c3[1])
+            valc1=euclidean(x[8],c1[0],x[9],c1[1])
+            valc2=euclidean(x[8],c2[0],x[9],c2[1])
+            valc3=euclidean(x[8],c3[0],x[9],c3[1])
             if valc1 < valc2 and valc1 < valc3:
                 c1cluster.append(x[0]) #enter the high sales cluster
             elif valc2 < valc1 and valc2 < valc3:
@@ -66,7 +66,7 @@ new_c2.append(float(temp_gsl2) / len(c2cluster))
 new_c3.append(float(temp_osl3) / len(c3cluster))
 new_c3.append(float(temp_gsl3) / len(c3cluster))
     
-#recalculate the centroid value
+#re-calculate the centroid value
 while c1 != new_c1 and c2 != new_c2 and c3 != new_c3:
     count1 += 1
     c1 = list(new_c1)
@@ -83,9 +83,9 @@ while c1 != new_c1 and c2 != new_c2 and c3 != new_c3:
                 continue
             else:
                 x = line.split(',')
-                valc1=euclidian(x[8],c1[0],x[9],c1[1])
-                valc2=euclidian(x[8],c2[0],x[9],c2[1])
-                valc3=euclidian(x[8],c3[0],x[9],c3[1])
+                valc1=euclidean(x[8],c1[0],x[9],c1[1])
+                valc2=euclidean(x[8],c2[0],x[9],c2[1])
+                valc3=euclidean(x[8],c3[0],x[9],c3[1])
                 if valc1 < valc2 and valc1 < valc3:
                     c1cluster.append(x[0])
                 elif valc2 < valc1 and valc2 < valc3:
