@@ -1,4 +1,4 @@
-#Trademark ~ El Patron ~
+#Trademark ~ El Patron/lordstark196 ~
 #Finding clusters of various video games based on their sales value by taking use of K-Means Clustering
 
 import math
